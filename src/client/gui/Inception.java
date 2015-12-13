@@ -45,7 +45,7 @@ public class Inception implements MouseListener {
 		// …Ë÷√Õº∆¨
 		try{
 			 LogoBuffered = ImageIO.read(new File(
-				"resource/Index//Logo.jpg"));
+				"resource/Index//Logo2.jpg"));
 		}
 		catch(Exception e){
 			System.out.println(e);
