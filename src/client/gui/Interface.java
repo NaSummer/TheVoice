@@ -11,7 +11,6 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.filechooser.FileSystemView;
 
@@ -79,10 +78,12 @@ public class Interface implements MouseListener {
 	static JPanel jp = new JPanel();
 	static Client client;
 	
+	/* Constructor */
 	Interface(Client client) {
 		this.client = client;
 	}
 
+	/* General Method - New & Set a new label*/
 	public static JLabel buildLabel(int x, int y, int width, int height,
 			ImageIcon image) {
 		JLabel jLbl = new JLabel();
@@ -93,7 +94,7 @@ public class Interface implements MouseListener {
 		return jLbl;
 	}
 
-	// Inception
+	/* ========== Inception ========== */
 	public static JPanel InceptionInterface() {
 
 		BufferedImage LogoBuffered = null;
@@ -154,7 +155,7 @@ public class Interface implements MouseListener {
 		return jp;
 	}
 
-	// SignUp
+	/* ========== SignUp ========== */
 	public static JPanel SignUpInterface() {
 
 		// 加载图片
@@ -221,7 +222,7 @@ public class Interface implements MouseListener {
 		return jp;
 	}
 
-	// SignIn
+	/* ========== SignIn ========== */
 	public static JPanel SignInInterface() {
 
 		// 加载图片
@@ -288,7 +289,7 @@ public class Interface implements MouseListener {
 		return jp;
 	}
 
-	// setting
+	// ========== Setting ========== */
 	public static JPanel SettingInterface() {
 
 		// 加载图片
@@ -354,7 +355,7 @@ public class Interface implements MouseListener {
 		return jp;
 	}
 
-	// TrainingMode
+	/* ========== TrainingMode ========== */
 	public static JPanel TrainingMode() {
 
 		// 加载图片
@@ -472,7 +473,7 @@ public class Interface implements MouseListener {
 		return jp;
 	}
 
-	// TraningMode Interface
+	/* ========== TraningMode Interface ========== */
 	public static JPanel TrainingModeInterface() {
 
 		// 加载图片
@@ -532,7 +533,7 @@ public class Interface implements MouseListener {
 		return jp;
 	}
 
-	// DisscusGround
+	/* ========== DisscusGround ========== */
 	public static JPanel DisscusGroundInterface() {
 		// 加载图片
 		ImageIcon comeBackToTraining = new ImageIcon(
@@ -595,8 +596,10 @@ public class Interface implements MouseListener {
 
 		return jp;
 	}
-
-	public static void openWeb(String url) {
+	
+	
+	/* Private Method */
+	private static void openWeb(String url) {
 		if (java.awt.Desktop.isDesktopSupported()) {
 			try {
 				// 创建一个URI实例,注意不是URL
@@ -617,9 +620,9 @@ public class Interface implements MouseListener {
 	}
 
 	
-	
+	/* ========== Mouse Listener ========== */
 	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
+		
 		JLabel Lbl = (JLabel) e.getSource(); // 创建temporary标签
 
 		// Inception
