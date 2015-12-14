@@ -59,11 +59,11 @@ public class GetArticle {
 
 			// get current article
 			Node article = articles.item(i);
-			System.out.println(article.getTextContent()+"\n==============");
+//			System.out.println(article.getTextContent()+"\n==============");
 			
 			// add article's title to articleList (item(1) store title)
 			articleList.add(article.getChildNodes().item(1).getTextContent());
-			System.out.println(article.getChildNodes().item(1).getTextContent()+"\n==============");
+//			System.out.println(article.getChildNodes().item(1).getTextContent()+"\n==============");
 
 //			/* ==================================================== */
 //			// get current article's info group

@@ -225,4 +225,9 @@ public class Client {
 
 	}
 
+	public boolean isAuth() {
+		return isAuth;
+	}
+	
+
 }

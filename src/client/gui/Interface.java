@@ -1,5 +1,6 @@
 package client.gui;
 
+import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -17,6 +18,8 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.filechooser.FileSystemView;
+
+import com.sun.org.apache.xpath.internal.operations.Bool;
 
 import client.transmission.Client;
 
@@ -37,7 +40,6 @@ public class Interface implements MouseListener {
 	static JPasswordField password_SignUp = new JPasswordField();
 	static JPasswordField confirm_SignUp = new JPasswordField();
 	
-	
 	// SignIn Label
 	static JLabel SignInLbl_SignIn;
 	static JLabel Enter2Lbl_SignIn;
@@ -47,11 +49,9 @@ public class Interface implements MouseListener {
 	static JTextField account_SignIn = new JTextField();
 	static JPasswordField password_SignIn = new JPasswordField();
 	
-	
-	
 	// Setting Label
-	static String path = "TrainingModeInterface"+"\\"+"\\Recommond1.jpg";;
-	static String path2 = "TrainingModeInterface"+"\\"+"\\Recommond2.jpg";;
+	static String path = "resource/TrainingModePhoto//rice.jpg";
+	static String path2 = "resource/TrainingModePhoto//toy.jpg";
 	static JLabel SettingLbl_Setting;
 	static JLabel SubmitLbl_Setting;
 	static JLabel Select1Lbl_Setting;
@@ -97,14 +97,26 @@ public class Interface implements MouseListener {
 		this.client = client;
 	}
 
-	/* General Method - New & Set a new label*/
-	public static JLabel buildLabel(int x, int y, int width, int height,
-			ImageIcon image) {
+	/* General Method - New & Set a new Image label*/
+	public static JLabel buildLabel(int x, int y, int width, int height, ImageIcon image) {
 		JLabel jLbl = new JLabel();
 		jLbl.setIcon(image);
 		jLbl.setBounds(x, y, width, height);
 		jLbl.addMouseListener(new Interface(client));
 
+		return jLbl;
+	}
+	
+	/* General Method - New & Set a new Text label*/
+	public static JLabel buildTextLabel(int x, int y, int width, int height, String text, Boolean isListenable) {
+		JLabel jLbl = new JLabel();
+		jLbl.setFont(new Font("Comic Sans MC",Font.PLAIN,20));
+		jLbl.setText(text);
+		jLbl.setBounds(x, y, width, height);
+		if (isListenable) {
+			jLbl.addMouseListener(new Interface(client));
+		}
+		
 		return jLbl;
 	}
 
@@ -361,16 +373,15 @@ public class Interface implements MouseListener {
 
 	/* ========== TraningMode Interface ========== */
 	public static JPanel TrainingModeInterface(int modeNum) {
-
-		// 加载图片
+		
+		// Load Image
+		ImageIcon WordButtonPicture1 = new ImageIcon(path);
+		ImageIcon WordButtonPicture2 = new ImageIcon(path2);
 		BufferedImage TrainingModeInterfaceClassBGBuffered = null;
-		ImageIcon WordButtonPicture1 = new ImageIcon(SettingClass.path);
-		ImageIcon WordButtonPicture2 = new ImageIcon(SettingClass.path2);
 		BufferedImage WordButtonBackBuffered = null;
-
-		// 设置图片
+		// Set Image
 		try {
-			TrainingModeInterfaceClassBGBuffered = ImageIO.read(new File("resource/TrainingModeInterface//Training Mode Interface2.jpg"));
+			TrainingModeInterfaceClassBGBuffered = ImageIO.read(new File("resource/TrainingModeInterface//Training Mode Interface" + modeNum + ".jpg"));
 			WordButtonBackBuffered = ImageIO.read(new File("resource/TrainingModeInterface//btnBack.jpg"));
 		} catch (Exception e) {
 			System.out.println(e);
@@ -378,26 +389,63 @@ public class Interface implements MouseListener {
 		ImageIcon TrainingModeInterface1ClassBG = new ImageIcon(TrainingModeInterfaceClassBGBuffered);
 		ImageIcon WordButtonBack = new ImageIcon(WordButtonBackBuffered);
 
-		TrainingModeInterface1ClassBG.setImage(TrainingModeInterface1ClassBG.getImage().getScaledInstance(600, 800, Image.SCALE_DEFAULT));
 		WordButtonPicture1.setImage(WordButtonPicture1.getImage().getScaledInstance(300, 180, Image.SCALE_DEFAULT));
 		WordButtonPicture2.setImage(WordButtonPicture2.getImage().getScaledInstance(300, 180, Image.SCALE_DEFAULT));
+		TrainingModeInterface1ClassBG.setImage(TrainingModeInterface1ClassBG.getImage().getScaledInstance(600, 800, Image.SCALE_DEFAULT));
 		WordButtonBack.setImage(WordButtonBack.getImage().getScaledInstance(120, 40, Image.SCALE_DEFAULT));
 
-		// 创建Label
-		TrainingModeInterface2ClassLbl_TraningInterface = buildLabel(0, 0, 600, 800, TrainingModeInterface1ClassBG);
+		// Create Label and bundle
 		picture1Lbl_TraningInterface = buildLabel(150, 130, 300, 180, WordButtonPicture1);
 		picture2Lbl_TraningInterface = buildLabel(150, 330, 300, 180, WordButtonPicture2);
-		backLbl_TraningInterface = buildLabel(235, 530, 120, 40, WordButtonBack);
-		// word1_TraningInterface = buildLabel(330, 360, 60, 60, WordButton4);
-		// word2_TraningInterface = buildLabel(390, 270, 60, 60, WordButton5);
+		TrainingModeInterface2ClassLbl_TraningInterface = buildLabel(0, 0, 600, 800, TrainingModeInterface1ClassBG);
+		backLbl_TraningInterface = buildLabel(235, 540, 120, 40, WordButtonBack);
+		word1_TraningInterface = buildTextLabel(480, 180, 100, 100, "I want to eat.", false);
+		word2_TraningInterface = buildTextLabel(480, 400, 100, 100, "I want to play.", false);
 
-		TrainingModeInterface2ClassLbl_TraningInterface.add(picture1Lbl_TraningInterface);
-		TrainingModeInterface2ClassLbl_TraningInterface.add(picture2Lbl_TraningInterface);
 		TrainingModeInterface2ClassLbl_TraningInterface.add(backLbl_TraningInterface);
-		// TrainingModeInterface2ClassLbl_TraningInterface.add(word1_TraningInterface);
-		// TrainingModeInterface2ClassLbl_TraningInterface.add(word2_TraningInterface);
+		
+		switch (modeNum) {
+		case 1:
+			TrainingModeInterface2ClassLbl_TraningInterface.add(picture1Lbl_TraningInterface);
+			TrainingModeInterface2ClassLbl_TraningInterface.add(picture2Lbl_TraningInterface);
+			break;
+		case 2:
+			word1_TraningInterface.addMouseListener(new Interface(client));
+			word2_TraningInterface.addMouseListener(new Interface(client));
+			word1_TraningInterface.setText("<html>I want <br>to eat.</html>");
+			word2_TraningInterface.setText("<html>I want <br>to play.</html>");
+			TrainingModeInterface2ClassLbl_TraningInterface.add(word1_TraningInterface);
+			TrainingModeInterface2ClassLbl_TraningInterface.add(word2_TraningInterface);
+			TrainingModeInterface2ClassLbl_TraningInterface.add(picture1Lbl_TraningInterface);
+			TrainingModeInterface2ClassLbl_TraningInterface.add(picture2Lbl_TraningInterface);
+			break;
+		case 3:
+			word1_TraningInterface.setBounds(200, 150, 250, 100);
+			word2_TraningInterface.setBounds(200, 350, 250, 100);
+			word1_TraningInterface.setFont(new Font("Comic Sans MC",Font.PLAIN,30));
+			word2_TraningInterface.setFont(new Font("Comic Sans MC",Font.PLAIN,30));
+			word1_TraningInterface.addMouseListener(new Interface(client));
+			word2_TraningInterface.addMouseListener(new Interface(client));
+			TrainingModeInterface2ClassLbl_TraningInterface.add(word1_TraningInterface);
+			TrainingModeInterface2ClassLbl_TraningInterface.add(word2_TraningInterface);
+			break;
+		case 4:
+			word1_TraningInterface.setBounds(200, 150, 250, 100);
+			word2_TraningInterface.setBounds(200, 350, 250, 100);
+			word1_TraningInterface.setFont(new Font("Comic Sans MC",Font.PLAIN,30));
+			word2_TraningInterface.setFont(new Font("Comic Sans MC",Font.PLAIN,30));
+			TrainingModeInterface2ClassLbl_TraningInterface.add(word1_TraningInterface);
+			TrainingModeInterface2ClassLbl_TraningInterface.add(word2_TraningInterface);
+			break;
+		case 5:
+			word1_TraningInterface.setBounds(140, 140, 500, 400);
+			word1_TraningInterface.setFont(new Font("Comic Sans MC",Font.PLAIN,50));
+			word1_TraningInterface.setText(("<html>I hope you can <br>speak it out to us.</html>"));
+			TrainingModeInterface2ClassLbl_TraningInterface.add(word1_TraningInterface);
+			break;
+		}
+		
 		jp.add(TrainingModeInterface2ClassLbl_TraningInterface);
-
 		return jp;
 	}
 
@@ -406,53 +454,61 @@ public class Interface implements MouseListener {
 		// get articleList
 		List<String> articelList = client.getArticleList();
 		
+		BufferedImage comeBackToTrainingBuffered = null;
+		BufferedImage disscusGroudBuffered = null;
+		BufferedImage logOutBuffered = null;
+		BufferedImage moreBuffered = null;
+		BufferedImage backBuffered = null;
+		BufferedImage photo1Buffered = null;
+		BufferedImage photo2Buffered = null;
+		BufferedImage photo3Buffered = null;
+		
+		try {
+			comeBackToTrainingBuffered = ImageIO.read(new File("resource/DisscusGround//Come back to training.jpg"));
+			disscusGroudBuffered = ImageIO.read(new File("resource/DisscusGround//Disscus Groud.jpg"));
+			logOutBuffered = ImageIO.read(new File("resource/DisscusGround//Log Out.jpg"));
+			moreBuffered = ImageIO.read(new File("resource/DisscusGround//More.jpg"));
+			backBuffered = ImageIO.read(new File("resource/DisscusGround//Word Button back.jpg"));
+			photo1Buffered = ImageIO.read(new File("resource/DisscusGround//1.jpg"));
+			photo2Buffered = ImageIO.read(new File("resource/DisscusGround//2.jpg"));
+			photo3Buffered = ImageIO.read(new File("resource/DisscusGround//3.jpg"));
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
 		// 加载图片
-		ImageIcon comeBackToTraining = new ImageIcon(DisscusGroundClass.class.getResource("resource//Come back to training.jpg"));
-		ImageIcon disscusGroud = new ImageIcon(DisscusGroundClass.class.getResource("resource//Disscus Groud.jpg"));
-		ImageIcon logOut = new ImageIcon(DisscusGroundClass.class.getResource("resource//Log Out.jpg"));
-		ImageIcon more = new ImageIcon(DisscusGroundClass.class.getResource("resource//More.jpg"));
-		ImageIcon back = new ImageIcon(DisscusGroundClass.class.getResource("resource//Word Button back.jpg"));
-		ImageIcon photo1 = new ImageIcon(DisscusGroundClass.class.getResource("resource//1.jpg"));
-		ImageIcon photo2 = new ImageIcon(DisscusGroundClass.class.getResource("resource//2.jpg"));
-		ImageIcon photo3 = new ImageIcon(DisscusGroundClass.class.getResource("resource//3.jpg"));
+		ImageIcon comeBackToTraining = new ImageIcon(comeBackToTrainingBuffered);
+		ImageIcon disscusGroud = new ImageIcon(disscusGroudBuffered);
+		ImageIcon logOut = new ImageIcon(logOutBuffered);
+		ImageIcon more = new ImageIcon(moreBuffered);
+		ImageIcon back = new ImageIcon(backBuffered);
+		ImageIcon photo1 = new ImageIcon(photo1Buffered);
+		ImageIcon photo2 = new ImageIcon(photo2Buffered);
+		ImageIcon photo3 = new ImageIcon(photo3Buffered);
 
-		// comeBackToTraining.setImage(comeBackToTraining.getImage().getScaledInstance(150,
-		// 50, Image.SCALE_DEFAULT));
-		// disscusGroud.setImage(WordButton1.getImage().getScaledInstance(60,
-		// 60, Image.SCALE_DEFAULT));
-		// logOut.setImage(WordButton2.getImage().getScaledInstance(60, 60,
-		// Image.SCALE_DEFAULT));
-		// more.setImage(WordButton3.getImage().getScaledInstance(60, 60,
-		// Image.SCALE_DEFAULT));
-		// back.setImage(WordButton4.getImage().getScaledInstance(60, 60,
-		// Image.SCALE_DEFAULT));
-		// photo1.setImage(WordButton5.getImage().getScaledInstance(60, 60,
-		// Image.SCALE_DEFAULT));
-		// photo2.setImage(WordButtonSetting.getImage().getScaledInstance(250,
-		// 40, Image.SCALE_DEFAULT));
-		// photo3.setImage(WordButtonIndex.getImage().getScaledInstance(90, 30,
-		// Image.SCALE_DEFAULT));
+		comeBackToTraining.setImage(comeBackToTraining.getImage().getScaledInstance(180, 30, Image.SCALE_DEFAULT));
+		// disscusGroud.setImage(WordButton1.getImage().getScaledInstance(60, 60, Image.SCALE_DEFAULT));
+		// logOut.setImage(WordButton2.getImage().getScaledInstance(60, 60, Image.SCALE_DEFAULT));
+		// more.setImage(WordButton3.getImage().getScaledInstance(60, 60, Image.SCALE_DEFAULT));
+		// back.setImage(WordButton4.getImage().getScaledInstance(60, 60, Image.SCALE_DEFAULT));
+		// photo1.setImage(WordButton5.getImage().getScaledInstance(60, 60, Image.SCALE_DEFAULT));
+		// photo2.setImage(WordButtonSetting.getImage().getScaledInstance(250, 40, Image.SCALE_DEFAULT));
+		// photo3.setImage(WordButtonIndex.getImage().getScaledInstance(90, 30, Image.SCALE_DEFAULT));
 
 		// 创建Label
 		DisscusGroundBGLbl_Dg = buildLabel(0, 0, 600, 800, disscusGroud);
-		backToTrainingLbl_Dg = buildLabel(360, 100, 240, 80, comeBackToTraining);
+		backToTrainingLbl_Dg = buildLabel(340, 125, 180, 30, comeBackToTraining);
 		LogOutLbl_Dg = buildLabel(250, 140, 60, 20, logOut);
 		More1Lbl_Dg = buildLabel(380, 330, 90, 30, more);
 		More2Lbl_Dg = buildLabel(380, 540, 90, 30, more);
-		BackLbl_Dg = buildLabel(30, 30, 120, 40, back);
-		picOne_Dg = buildLabel(100, 425, 100, 100, photo1);
-		picTwo_Dg = buildLabel(210, 425, 100, 100, photo2);
-		picThree_Dg = buildLabel(320, 425, 100, 100, photo3);
+//		BackLbl_Dg = buildLabel(30, 30, 120, 40, back);
+		picOne_Dg = buildLabel(120, 435, 100, 100, photo1);
+		picTwo_Dg = buildLabel(230, 435, 100, 100, photo2);
+		picThree_Dg = buildLabel(340, 435, 100, 100, photo3);
 		
-		articleLbl1_Dg = new JLabel(articelList.get(0));
-		articleLbl2_Dg = new JLabel(articelList.get(1));
-		articleLbl3_Dg = new JLabel(articelList.get(2));
-		articleLbl1_Dg.setBounds(190, 215, 250, 30); // articleLbl1位置为170，215 大小为
-		articleLbl1_Dg.addMouseListener(new Interface(client)); // 设置articleLbl的监听
-		articleLbl2_Dg.setBounds(190, 250, 250, 30); // articleLbl2位置为170，250 大小为
-		articleLbl2_Dg.addMouseListener(new Interface(client)); // 设置articleLbl2的监听
-		articleLbl3_Dg.setBounds(190, 283, 250, 30); // articleLbl3位置为170，283大小为
-		articleLbl3_Dg.addMouseListener(new Interface(client)); // 设置articleLbl3的监听
+		articleLbl1_Dg = buildTextLabel(190, 213, 250, 30, articelList.get(0), true);
+		articleLbl2_Dg = buildTextLabel(190, 247, 250, 30, articelList.get(1), true);
+		articleLbl3_Dg = buildTextLabel(190, 280, 250, 30, articelList.get(2), true);
 
 		DisscusGroundBGLbl_Dg.add(backToTrainingLbl_Dg);
 		DisscusGroundBGLbl_Dg.add(LogOutLbl_Dg);
@@ -461,7 +517,7 @@ public class Interface implements MouseListener {
 		DisscusGroundBGLbl_Dg.add(articleLbl3_Dg);
 		DisscusGroundBGLbl_Dg.add(More1Lbl_Dg);
 		DisscusGroundBGLbl_Dg.add(More2Lbl_Dg);
-		DisscusGroundBGLbl_Dg.add(BackLbl_Dg);
+//		DisscusGroundBGLbl_Dg.add(BackLbl_Dg);
 		DisscusGroundBGLbl_Dg.add(picOne_Dg);
 		DisscusGroundBGLbl_Dg.add(picTwo_Dg);
 		DisscusGroundBGLbl_Dg.add(picThree_Dg);
@@ -512,7 +568,7 @@ public class Interface implements MouseListener {
 			jp.repaint();
 		}
 
-		// sign up
+		/* ===== sign up */
 		else if (Lbl == signIn1Lbl_SignUp) {
 			jp.removeAll();
 			SignInInterface();
@@ -542,7 +598,7 @@ public class Interface implements MouseListener {
 			jp.repaint();
 		}
 
-		// sign in
+		/* ===== sign in */
 		else if (Lbl == Enter2Lbl_SignIn) {
 			if (client.signIn(account_SignIn.getText(), password_SignIn.getText())) {
 				jp.removeAll(); // 关闭当前窗口
@@ -561,13 +617,13 @@ public class Interface implements MouseListener {
 			jp.repaint();
 		}
 
-		// setting
+		/* ===== setting */
 		else if (Lbl == SubmitLbl_Setting) {
 			jp.removeAll();
 			TrainingMode();
 			jp.repaint();
 		} else if (Lbl == Select1Lbl_Setting) {
-			jp.removeAll();
+//			jp.removeAll();
 			int result = 0;
 			// File file = null;
 
@@ -584,14 +640,14 @@ public class Interface implements MouseListener {
 					path = fileChooser.getSelectedFile().getCanonicalPath();
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
-					path = "TrainingModeInterface" + "\\" + "\\Recommond1.jpg";
+					path = "resource/TrainingModePhoto//toy.jpg";
 				}
 
 				System.out.println("path: " + path);
 			}
-			jp.repaint();
+//			jp.repaint();
 		} else if (Lbl == Select2Lbl_Setting) {
-			jp.removeAll();
+//			jp.removeAll();
 			int result = 0;
 			// File file2 = null;
 
@@ -608,18 +664,18 @@ public class Interface implements MouseListener {
 					path2 = fileChooser2.getSelectedFile().getCanonicalPath();
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
-					path2 = "TrainingModeInterface" + "\\" + "\\recommond2.jpg";
+					path2 = "resource/TrainingModePhoto//rice.jpg";
 				}
 			}
 			System.out.println("path: " + path2);
-			jp.repaint();
+//			jp.repaint();
 		} else if (Lbl == BackLbl_Setting) {
 			jp.removeAll();
 			TrainingMode();
 			jp.repaint();
 		}
 
-		// Training mode
+		/* ===== Training mode */
 		else if (Lbl == WordButton1Lbl_TraningMode) {
 			jp.removeAll();
 			TrainingModeInterface(1);
@@ -646,11 +702,15 @@ public class Interface implements MouseListener {
 			jp.repaint();
 		} else if (Lbl == indexLbl_TraningMode) {
 			jp.removeAll();
-			InceptionInterface();
+			if (client.isAuth()) {
+				DisscusGroundInterface();
+			} else {
+				InceptionInterface();
+			}
 			jp.repaint();
 		}
 
-		// training mode interface
+		/* ===== training mode interface */
 		else if (Lbl == picture1Lbl_TraningInterface) {
 			sound.main(null);
 		} else if (Lbl == picture2Lbl_TraningInterface) {
@@ -665,7 +725,7 @@ public class Interface implements MouseListener {
 			sound2.main(null);
 		}
 
-		// DG
+		/* ===== Discuss Ground */ 
 		else if (Lbl == backToTrainingLbl_Dg) {
 			jp.removeAll();
 			TrainingMode();
@@ -680,10 +740,6 @@ public class Interface implements MouseListener {
 //			jp.repaint();
 		} else if (Lbl == More2Lbl_Dg) {
 			openWeb("http://mp.weixin.qq.com/s?__biz=MzI5OTEyMTU5MQ==&mid=400676956&idx=1&sn=f2f93166ce3fe817d3f599949588d7d6#rd");
-		} else if (Lbl == BackLbl_Dg) {
-			jp.removeAll();
-			InceptionInterface();
-			jp.repaint();
 		} else if (Lbl == articleLbl1_Dg) {
 			openWeb(client.getArticleUrl(0));
 		} else if (Lbl == articleLbl2_Dg) {
