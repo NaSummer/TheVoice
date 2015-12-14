@@ -11,7 +11,10 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 import javax.swing.filechooser.FileSystemView;
 
 import client.transmission.Client;
@@ -28,13 +31,23 @@ public class Interface implements MouseListener {
 	static JLabel signIn1Lbl_SignUp;
 	static JLabel submit1Lbl_SignUp;
 	static JLabel trainingMode1Lbl_SignUp;
-
+	// 创建TextField和PasswordField
+	static JTextField account_SignUp = new JTextField();
+	static JPasswordField password_SignUp = new JPasswordField();
+	static JPasswordField confirm_SignUp = new JPasswordField();
+	
+	
 	// SignIn Label
 	static JLabel SignInLbl_SignIn;
 	static JLabel Enter2Lbl_SignIn;
 	static JLabel SignUp2Lbl_SignIn;
 	static JLabel trainingModeLbl_SignIn;
-
+	// 创建TextField和PasswordField
+	static JTextField account_SignIn = new JTextField();
+	static JPasswordField password_SignIn = new JPasswordField();
+	
+	
+	
 	// Setting Label
 	static String path = null;
 	static String path2 = null;
@@ -209,14 +222,24 @@ public class Interface implements MouseListener {
 
 		// 创建Label
 		SignUpLbl_SignUp = buildLabel(0, 0, 600, 800, SignUpBG);
-		signIn1Lbl_SignUp = buildLabel(200, 300, 90, 30, WordButtonSignIn1);
+		signIn1Lbl_SignUp = buildLabel(200, 400, 90, 30, WordButtonSignIn1);
 		submit1Lbl_SignUp = buildLabel(400, 400, 90, 30, WordButtonsubmit1);
 		trainingMode1Lbl_SignUp = buildLabel(385, 70, 120, 40,
 				WordButtonTrainingMode1);
 
+		account_SignUp.setBounds(200, 260, 250, 30);
+		password_SignUp.setBounds(200, 310, 250, 30);
+		confirm_SignUp.setBounds(200, 360, 250, 30);
+		
+		
 		SignUpLbl_SignUp.add(signIn1Lbl_SignUp);
 		SignUpLbl_SignUp.add(submit1Lbl_SignUp);
 		SignUpLbl_SignUp.add(trainingMode1Lbl_SignUp);
+		
+		SignUpLbl_SignUp.add(account_SignUp);
+		SignUpLbl_SignUp.add(password_SignUp);
+		SignUpLbl_SignUp.add(confirm_SignUp);
+		
 		jp.add(SignUpLbl_SignUp);
 
 		return jp;
@@ -281,9 +304,19 @@ public class Interface implements MouseListener {
 		trainingModeLbl_SignIn = buildLabel(385, 70, 120, 40,
 				WordButtonTrainingMode);
 
+		account_SignIn.setBounds(203, 260, 250, 30);
+		password_SignIn.setBounds(203, 345, 250, 30);
+		
+		
+		
+		
 		SignInLbl_SignIn.add(Enter2Lbl_SignIn);
 		SignInLbl_SignIn.add(SignUp2Lbl_SignIn);
 		SignInLbl_SignIn.add(trainingModeLbl_SignIn);
+		
+		SignInLbl_SignIn.add(account_SignIn);
+		SignInLbl_SignIn.add(password_SignIn);
+		
 		jp.add(SignInLbl_SignIn);
 
 		return jp;
@@ -646,34 +679,34 @@ public class Interface implements MouseListener {
 			SignInInterface();
 			jp.repaint();
 		} else if (Lbl == submit1Lbl_SignUp) {
-//			if (account.getText() == "") {
-//				JOptionPane.showMessageDialog(null,
-//						"The account cannot be blank!", "Error",
-//						JOptionPane.ERROR_MESSAGE);
-//			} else if (password.getText() == "") {
-//				JOptionPane.showMessageDialog(null,
-//						"The password cannot be blank!", "Error",
-//						JOptionPane.ERROR_MESSAGE);
-//			} else if (confirm.getText() == "") {
-//				JOptionPane.showMessageDialog(null,
-//						"The confirm cannot be blank!", "Error",
-//						JOptionPane.ERROR_MESSAGE);
-//			} else if (!password.getText().equals(confirm.getText())) {
-//				JOptionPane.showMessageDialog(null,
-//						"Your password and confirm must be the same!", "Error",
-//						JOptionPane.ERROR_MESSAGE);
-//			} else {
-//				boolean isAuth = client.signUp(account.getText(),
-//						password.getText());
-//				if (isAuth) {
-//					jp.removeAll();
-//					DisscusGroundInterface();
-//				} else {
-//					JOptionPane.showMessageDialog(null,
-//							"Sign Up failed, username may exist.", "Error",
-//							JOptionPane.ERROR_MESSAGE);
-//				}
-//			}
+			if (account_SignUp.getText() == "") {
+				JOptionPane.showMessageDialog(null,
+						"The account cannot be blank!", "Error",
+						JOptionPane.ERROR_MESSAGE);
+			} else if (password_SignUp.getText() == "") {
+				JOptionPane.showMessageDialog(null,
+						"The password cannot be blank!", "Error",
+						JOptionPane.ERROR_MESSAGE);
+			} else if (confirm_SignUp.getText() == "") {
+				JOptionPane.showMessageDialog(null,
+						"The confirm cannot be blank!", "Error",
+						JOptionPane.ERROR_MESSAGE);
+			} else if (!password_SignUp.getText().equals(confirm_SignUp.getText())) {
+				JOptionPane.showMessageDialog(null,
+						"Your password and confirm must be the same!", "Error",
+						JOptionPane.ERROR_MESSAGE);
+			} else {
+				boolean isAuth = client.signUp(account_SignUp.getText(),
+						password_SignUp.getText());
+				if (isAuth) {
+					jp.removeAll();
+					DisscusGroundInterface();
+				} else {
+					JOptionPane.showMessageDialog(null,
+							"Sign Up failed, username may exist.", "Error",
+							JOptionPane.ERROR_MESSAGE);
+				}
+			}
 			jp.repaint();
 		} else if (Lbl == trainingMode1Lbl_SignUp) {
 			jp.removeAll();
@@ -683,15 +716,15 @@ public class Interface implements MouseListener {
 
 		// sign in
 		else if (Lbl == Enter2Lbl_SignIn) {
-			// if (client.signIn(account.getText(), password.getText())) {
-			// DisscusGroundInterface(); // 点击Enter2Btn后跳转至DisscusGroundClass的窗口
-			// jp.removeAll(); // 关闭当前窗口
-			// } else {
-			// JOptionPane.showMessageDialog(null,
-			// "the account or password may be wrong!", "Error",
-			// JOptionPane.ERROR_MESSAGE);
-			// }
-			// jp.repaint();
+			 if (client.signIn(account_SignIn.getText(), password_SignIn.getText())) {
+			 DisscusGroundInterface(); // 点击Enter2Btn后跳转至DisscusGroundClass的窗口
+			 jp.removeAll(); // 关闭当前窗口
+			 } else {
+			 JOptionPane.showMessageDialog(null,
+			 "the account or password may be wrong!", "Error",
+			 JOptionPane.ERROR_MESSAGE);
+			 }
+			 jp.repaint();
 		} else if (Lbl == SignUp2Lbl_SignIn) {
 			jp.removeAll();
 			SignUpInterface();
