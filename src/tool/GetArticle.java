@@ -1,7 +1,7 @@
 package tool;
 
 import java.io.IOException;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -52,7 +52,7 @@ public class GetArticle {
 		this.docContent = document.getChildNodes();
 		this.articles = docContent.item(0).getChildNodes();
 		
-		this.articleList = new LinkedList<>();
+		this.articleList = new ArrayList<String>();
 
 		// check articles in group one by one
 		for (int i = 1; i < articles.getLength(); i += 2) {

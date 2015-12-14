@@ -6,6 +6,7 @@ import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -49,8 +50,8 @@ public class Interface implements MouseListener {
 	
 	
 	// Setting Label
-	static String path = null;
-	static String path2 = null;
+	static String path = "TrainingModeInterface"+"\\"+"\\Recommond1.jpg";;
+	static String path2 = "TrainingModeInterface"+"\\"+"\\Recommond2.jpg";;
 	static JLabel SettingLbl_Setting;
 	static JLabel SubmitLbl_Setting;
 	static JLabel Select1Lbl_Setting;
@@ -118,41 +119,21 @@ public class Interface implements MouseListener {
 		// 设置图片
 		try {
 			LogoBuffered = ImageIO.read(new File("resource/Index//Logo.jpg"));
+			signInBuffered = ImageIO.read(new File("resource/Index//Word Button Sign In.jpg"));
+			signUpBuffered = ImageIO.read(new File("resource/Index//Word Button Sign Up.jpg"));
+			trainingModeBuffered = ImageIO.read(new File("resource/Index//Word Button TrainingMode.jpg"));
 		} catch (Exception e) {
 			System.out.println(e);
 		}
 		ImageIcon Logo = new ImageIcon(LogoBuffered);
-
-		try {
-			signInBuffered = ImageIO.read(new File(
-					"resource/Index//Word Button Sign In.jpg"));
-		} catch (Exception e) {
-			System.out.println(e);
-		}
 		ImageIcon signIn = new ImageIcon(signInBuffered);
-		try {
-			signUpBuffered = ImageIO.read(new File(
-					"resource/Index//Word Button Sign Up.jpg"));
-		} catch (Exception e) {
-			System.out.println(e);
-		}
 		ImageIcon signUp = new ImageIcon(signUpBuffered);
-		try {
-			trainingModeBuffered = ImageIO.read(new File(
-					"resource/Index//Word Button TrainingMode.jpg"));
-		} catch (Exception e) {
-			System.out.println(e);
-		}
 		ImageIcon trainingMode = new ImageIcon(trainingModeBuffered);
 
-		Logo.setImage(Logo.getImage().getScaledInstance(600, 800,
-				Image.SCALE_DEFAULT));
-		signUp.setImage(signUp.getImage().getScaledInstance(90, 30,
-				Image.SCALE_DEFAULT));
-		signIn.setImage(signIn.getImage().getScaledInstance(90, 30,
-				Image.SCALE_DEFAULT));
-		trainingMode.setImage(trainingMode.getImage().getScaledInstance(120,
-				40, Image.SCALE_DEFAULT));
+		Logo.setImage(Logo.getImage().getScaledInstance(600, 800, Image.SCALE_DEFAULT));
+		signUp.setImage(signUp.getImage().getScaledInstance(90, 30, Image.SCALE_DEFAULT));
+		signIn.setImage(signIn.getImage().getScaledInstance(90, 30, Image.SCALE_DEFAULT));
+		trainingMode.setImage(trainingMode.getImage().getScaledInstance(120, 40, Image.SCALE_DEFAULT));
 
 		// 创建Label
 		LogoLbl_Inception = buildLabel(0, 0, 600, 800, Logo);
@@ -179,67 +160,41 @@ public class Interface implements MouseListener {
 
 		// 设置图片
 		try {
-			SignUpBGBuffered = ImageIO.read(new File(
-					"resource/SignUp//Sign Up.jpg"));
+			SignUpBGBuffered = ImageIO.read(new File("resource/SignUp//Sign Up.jpg"));
+			WordButtonSignIn1Buffered = ImageIO.read(new File("resource/SignUp//Word Button Sign In1.jpg"));
+			WordButtonsubmit1Buffered = ImageIO.read(new File("resource/SignUp//Word Button submit1.jpg"));
+			WordButtonTrainingMode1Buffered = ImageIO.read(new File("resource/SignUp//Word Button TrainingMode1.jpg"));
 		} catch (Exception e) {
 			System.out.println(e);
 		}
 		ImageIcon SignUpBG = new ImageIcon(SignUpBGBuffered);
-
-		try {
-			WordButtonSignIn1Buffered = ImageIO.read(new File(
-					"resource/SignUp//Word Button Sign In1.jpg"));
-		} catch (Exception e) {
-			System.out.println(e);
-		}
 		ImageIcon WordButtonSignIn1 = new ImageIcon(WordButtonSignIn1Buffered);
-
-		try {
-			WordButtonsubmit1Buffered = ImageIO.read(new File(
-					"resource/SignUp//Word Button submit1.jpg"));
-		} catch (Exception e) {
-			System.out.println(e);
-		}
 		ImageIcon WordButtonsubmit1 = new ImageIcon(WordButtonsubmit1Buffered);
+		ImageIcon WordButtonTrainingMode1 = new ImageIcon(WordButtonTrainingMode1Buffered);
 
-		try {
-			WordButtonTrainingMode1Buffered = ImageIO.read(new File(
-					"resource/SignUp//Word Button TrainingMode1.jpg"));
-		} catch (Exception e) {
-			System.out.println(e);
-		}
-		ImageIcon WordButtonTrainingMode1 = new ImageIcon(
-				WordButtonTrainingMode1Buffered);
-
-		SignUpBG.setImage(SignUpBG.getImage().getScaledInstance(600, 800,
-				Image.SCALE_DEFAULT));
-		WordButtonSignIn1.setImage(WordButtonSignIn1.getImage()
-				.getScaledInstance(90, 30, Image.SCALE_DEFAULT));
-		WordButtonsubmit1.setImage(WordButtonsubmit1.getImage()
-				.getScaledInstance(90, 30, Image.SCALE_DEFAULT));
-		WordButtonTrainingMode1.setImage(WordButtonTrainingMode1.getImage()
-				.getScaledInstance(120, 40, Image.SCALE_DEFAULT));
+		SignUpBG.setImage(SignUpBG.getImage().getScaledInstance(600, 800, Image.SCALE_DEFAULT));
+		WordButtonSignIn1.setImage(WordButtonSignIn1.getImage().getScaledInstance(90, 30, Image.SCALE_DEFAULT));
+		WordButtonsubmit1.setImage(WordButtonsubmit1.getImage().getScaledInstance(90, 30, Image.SCALE_DEFAULT));
+		WordButtonTrainingMode1.setImage(WordButtonTrainingMode1.getImage().getScaledInstance(120, 40, Image.SCALE_DEFAULT));
 
 		// 创建Label
 		SignUpLbl_SignUp = buildLabel(0, 0, 600, 800, SignUpBG);
 		signIn1Lbl_SignUp = buildLabel(200, 400, 90, 30, WordButtonSignIn1);
 		submit1Lbl_SignUp = buildLabel(400, 400, 90, 30, WordButtonsubmit1);
-		trainingMode1Lbl_SignUp = buildLabel(385, 70, 120, 40,
-				WordButtonTrainingMode1);
+		trainingMode1Lbl_SignUp = buildLabel(385, 70, 120, 40, WordButtonTrainingMode1);
 
 		account_SignUp.setBounds(200, 260, 250, 30);
 		password_SignUp.setBounds(200, 310, 250, 30);
 		confirm_SignUp.setBounds(200, 360, 250, 30);
-		
-		
+
 		SignUpLbl_SignUp.add(signIn1Lbl_SignUp);
 		SignUpLbl_SignUp.add(submit1Lbl_SignUp);
 		SignUpLbl_SignUp.add(trainingMode1Lbl_SignUp);
-		
+
 		SignUpLbl_SignUp.add(account_SignUp);
 		SignUpLbl_SignUp.add(password_SignUp);
 		SignUpLbl_SignUp.add(confirm_SignUp);
-		
+
 		jp.add(SignUpLbl_SignUp);
 
 		return jp;
@@ -256,67 +211,39 @@ public class Interface implements MouseListener {
 
 		// 设置图片
 		try {
-			SignInBGBuffered = ImageIO.read(new File(
-					"resource/SignIn//Sign In.jpg"));
+			SignInBGBuffered = ImageIO.read(new File("resource/SignIn//Sign In.jpg"));
+			WordButtonEnter2Buffered = ImageIO.read(new File("resource/SignIn//Word Button enter2.jpg"));
+			WordButtonSignUp2Buffered = ImageIO.read(new File("resource/SignIn//Word Button Sign Up2.jpg"));
+			WordButtonTrainingModeBuffered = ImageIO.read(new File("resource/SignIn//Word Button TrainingMode.jpg"));
 		} catch (Exception e) {
 			System.out.println(e);
 		}
 		ImageIcon SignInBG = new ImageIcon(SignInBGBuffered);
-
-		try {
-			WordButtonEnter2Buffered = ImageIO.read(new File(
-					"resource/SignIn//Word Button enter2.jpg"));
-		} catch (Exception e) {
-			System.out.println(e);
-		}
 		ImageIcon WordButtonEnter2 = new ImageIcon(WordButtonEnter2Buffered);
-
-		try {
-			WordButtonSignUp2Buffered = ImageIO.read(new File(
-					"resource/SignIn//Word Button Sign Up2.jpg"));
-		} catch (Exception e) {
-			System.out.println(e);
-		}
 		ImageIcon WordButtonSignUp2 = new ImageIcon(WordButtonSignUp2Buffered);
+		ImageIcon WordButtonTrainingMode = new ImageIcon(WordButtonTrainingModeBuffered);
 
-		try {
-			WordButtonTrainingModeBuffered = ImageIO.read(new File(
-					"resource/SignIn//Word Button TrainingMode.jpg"));
-		} catch (Exception e) {
-			System.out.println(e);
-		}
-		ImageIcon WordButtonTrainingMode = new ImageIcon(
-				WordButtonTrainingModeBuffered);
-
-		SignInBG.setImage(SignInBG.getImage().getScaledInstance(600, 800,
-				Image.SCALE_DEFAULT));
-		WordButtonEnter2.setImage(WordButtonEnter2.getImage()
-				.getScaledInstance(90, 30, Image.SCALE_DEFAULT));
-		WordButtonSignUp2.setImage(WordButtonSignUp2.getImage()
-				.getScaledInstance(90, 30, Image.SCALE_DEFAULT));
-		WordButtonTrainingMode.setImage(WordButtonTrainingMode.getImage()
-				.getScaledInstance(120, 40, Image.SCALE_DEFAULT));
+		SignInBG.setImage(SignInBG.getImage().getScaledInstance(600, 800, Image.SCALE_DEFAULT));
+		WordButtonEnter2.setImage(WordButtonEnter2.getImage().getScaledInstance(90, 30, Image.SCALE_DEFAULT));
+		WordButtonSignUp2.setImage(WordButtonSignUp2.getImage().getScaledInstance(90, 30, Image.SCALE_DEFAULT));
+		WordButtonTrainingMode.setImage(WordButtonTrainingMode.getImage().getScaledInstance(120, 40, Image.SCALE_DEFAULT));
 
 		// 创建Label
 		SignInLbl_SignIn = buildLabel(0, 0, 600, 800, SignInBG);
-		Enter2Lbl_SignIn = buildLabel(175, 400, 90, 30, WordButtonEnter2);
-		SignUp2Lbl_SignIn = buildLabel(345, 400, 90, 30, WordButtonSignUp2);
-		trainingModeLbl_SignIn = buildLabel(385, 70, 120, 40,
-				WordButtonTrainingMode);
+		Enter2Lbl_SignIn = buildLabel(345, 400, 90, 30, WordButtonEnter2);
+		SignUp2Lbl_SignIn = buildLabel(175, 400, 90, 30, WordButtonSignUp2);
+		trainingModeLbl_SignIn = buildLabel(385, 70, 120, 40, WordButtonTrainingMode);
 
 		account_SignIn.setBounds(203, 260, 250, 30);
 		password_SignIn.setBounds(203, 345, 250, 30);
-		
-		
-		
-		
+
 		SignInLbl_SignIn.add(Enter2Lbl_SignIn);
 		SignInLbl_SignIn.add(SignUp2Lbl_SignIn);
 		SignInLbl_SignIn.add(trainingModeLbl_SignIn);
-		
+
 		SignInLbl_SignIn.add(account_SignIn);
 		SignInLbl_SignIn.add(password_SignIn);
-		
+
 		jp.add(SignInLbl_SignIn);
 
 		return jp;
@@ -333,44 +260,22 @@ public class Interface implements MouseListener {
 
 		// 设置图片
 		try {
-			SettingBGBuffered = ImageIO.read(new File(
-					"resource/Setting//Setting.jpg"));
+			SettingBGBuffered = ImageIO.read(new File("resource/Setting//Setting.jpg"));
+			WordButtonSubmitBuffered = ImageIO.read(new File("resource/Setting//Word Button Submit.jpg"));
+			WordButtonSelectBuffered = ImageIO.read(new File("resource/Setting//Word Button select.jpg"));
+			WordButtonBackBuffered = ImageIO.read(new File("resource/Setting//Word Button back.jpg"));
 		} catch (Exception e) {
 			System.out.println(e);
 		}
 		ImageIcon SettingBG = new ImageIcon(SettingBGBuffered);
-
-		try {
-			WordButtonSubmitBuffered = ImageIO.read(new File(
-					"resource/Setting//Word Button Submit.jpg"));
-		} catch (Exception e) {
-			System.out.println(e);
-		}
 		ImageIcon WordButtonSubmit = new ImageIcon(WordButtonSubmitBuffered);
-
-		try {
-			WordButtonSelectBuffered = ImageIO.read(new File(
-					"resource/Setting//Word Button select.jpg"));
-		} catch (Exception e) {
-			System.out.println(e);
-		}
 		ImageIcon WordButtonSelect = new ImageIcon(WordButtonSelectBuffered);
-		try {
-			WordButtonBackBuffered = ImageIO.read(new File(
-					"resource/Setting//Word Button back.jpg"));
-		} catch (Exception e) {
-			System.out.println(e);
-		}
 		ImageIcon WordButtonBack = new ImageIcon(WordButtonBackBuffered);
 
-		SettingBG.setImage(SettingBG.getImage().getScaledInstance(600, 800,
-				Image.SCALE_DEFAULT));
-		WordButtonSubmit.setImage(WordButtonSubmit.getImage()
-				.getScaledInstance(90, 30, Image.SCALE_DEFAULT));
-		WordButtonSelect.setImage(WordButtonSelect.getImage()
-				.getScaledInstance(90, 30, Image.SCALE_DEFAULT));
-		WordButtonBack.setImage(WordButtonBack.getImage().getScaledInstance(
-				120, 40, Image.SCALE_DEFAULT));
+		SettingBG.setImage(SettingBG.getImage().getScaledInstance(600, 800, Image.SCALE_DEFAULT));
+		WordButtonSubmit.setImage(WordButtonSubmit.getImage().getScaledInstance(90, 30, Image.SCALE_DEFAULT));
+		WordButtonSelect.setImage(WordButtonSelect.getImage().getScaledInstance(90, 30, Image.SCALE_DEFAULT));
+		WordButtonBack.setImage(WordButtonBack.getImage().getScaledInstance(120, 40, Image.SCALE_DEFAULT));
 
 		// 创建Label
 		SettingLbl_Setting = buildLabel(0, 0, 600, 800, SettingBG);
@@ -403,85 +308,34 @@ public class Interface implements MouseListener {
 
 		// 设置图片
 		try {
-			TraingingModeBGBuffered = ImageIO.read(new File(
-					"resource/TrainingMode//Training Mode.jpg"));
+			TraingingModeBGBuffered = ImageIO.read(new File("resource/TrainingMode//Training Mode.jpg"));
+			WordButton1Buffered = ImageIO.read(new File("resource/TrainingMode//Word Button 1.jpg"));
+			WordButton2Buffered = ImageIO.read(new File("resource/TrainingMode//Word Button 2.jpg"));
+			WordButton3Buffered = ImageIO.read(new File("resource/TrainingMode//Word Button 3.jpg"));
+			WordButton4Buffered = ImageIO.read(new File("resource/TrainingMode//Word Button 4.jpg"));
+			WordButton5Buffered = ImageIO.read(new File("resource/TrainingMode//Word Button 5.jpg"));
+			WordButtonIndexBuffered = ImageIO.read(new File("resource/TrainingMode//Word Button Index.jpg"));
+			WordButtonSettingBuffered = ImageIO.read(new File("resource/TrainingMode//Word Button Setting.jpg"));
 		} catch (Exception e) {
 			System.out.println(e);
 		}
 		ImageIcon TrainingModeBG = new ImageIcon(TraingingModeBGBuffered);
-
-		try {
-			WordButton1Buffered = ImageIO.read(new File(
-					"resource/TrainingMode//Word Button 1.jpg"));
-		} catch (Exception e) {
-			System.out.println(e);
-		}
 		ImageIcon WordButton1 = new ImageIcon(WordButton1Buffered);
-
-		try {
-			WordButton2Buffered = ImageIO.read(new File(
-					"resource/TrainingMode//Word Button 2.jpg"));
-		} catch (Exception e) {
-			System.out.println(e);
-		}
 		ImageIcon WordButton2 = new ImageIcon(WordButton2Buffered);
-
-		try {
-			WordButton3Buffered = ImageIO.read(new File(
-					"resource/TrainingMode//Word Button 3.jpg"));
-		} catch (Exception e) {
-			System.out.println(e);
-		}
 		ImageIcon WordButton3 = new ImageIcon(WordButton3Buffered);
-
-		try {
-			WordButton4Buffered = ImageIO.read(new File(
-					"resource/TrainingMode//Word Button 4.jpg"));
-		} catch (Exception e) {
-			System.out.println(e);
-		}
 		ImageIcon WordButton4 = new ImageIcon(WordButton4Buffered);
-
-		try {
-			WordButton5Buffered = ImageIO.read(new File(
-					"resource/TrainingMode//Word Button 5.jpg"));
-		} catch (Exception e) {
-			System.out.println(e);
-		}
 		ImageIcon WordButton5 = new ImageIcon(WordButton5Buffered);
-
-		try {
-			WordButtonIndexBuffered = ImageIO.read(new File(
-					"resource/TrainingMode//Word Button Index.jpg"));
-		} catch (Exception e) {
-			System.out.println(e);
-		}
 		ImageIcon WordButtonIndex = new ImageIcon(WordButtonIndexBuffered);
-
-		try {
-			WordButtonSettingBuffered = ImageIO.read(new File(
-					"resource/TrainingMode//Word Button Setting.jpg"));
-		} catch (Exception e) {
-			System.out.println(e);
-		}
 		ImageIcon WordButtonSetting = new ImageIcon(WordButtonSettingBuffered);
 
-		TrainingModeBG.setImage(TrainingModeBG.getImage().getScaledInstance(
-				600, 800, Image.SCALE_DEFAULT));
-		WordButton1.setImage(WordButton1.getImage().getScaledInstance(60, 60,
-				Image.SCALE_DEFAULT));
-		WordButton2.setImage(WordButton2.getImage().getScaledInstance(60, 60,
-				Image.SCALE_DEFAULT));
-		WordButton3.setImage(WordButton3.getImage().getScaledInstance(60, 60,
-				Image.SCALE_DEFAULT));
-		WordButton4.setImage(WordButton4.getImage().getScaledInstance(60, 60,
-				Image.SCALE_DEFAULT));
-		WordButton5.setImage(WordButton5.getImage().getScaledInstance(60, 60,
-				Image.SCALE_DEFAULT));
-		WordButtonSetting.setImage(WordButtonSetting.getImage()
-				.getScaledInstance(250, 40, Image.SCALE_DEFAULT));
-		WordButtonIndex.setImage(WordButtonIndex.getImage().getScaledInstance(
-				90, 30, Image.SCALE_DEFAULT));
+		TrainingModeBG.setImage(TrainingModeBG.getImage().getScaledInstance(600, 800, Image.SCALE_DEFAULT));
+		WordButton1.setImage(WordButton1.getImage().getScaledInstance(60, 60, Image.SCALE_DEFAULT));
+		WordButton2.setImage(WordButton2.getImage().getScaledInstance(60, 60, Image.SCALE_DEFAULT));
+		WordButton3.setImage(WordButton3.getImage().getScaledInstance(60, 60, Image.SCALE_DEFAULT));
+		WordButton4.setImage(WordButton4.getImage().getScaledInstance(60, 60, Image.SCALE_DEFAULT));
+		WordButton5.setImage(WordButton5.getImage().getScaledInstance(60, 60, Image.SCALE_DEFAULT));
+		WordButtonSetting.setImage(WordButtonSetting.getImage().getScaledInstance(250, 40, Image.SCALE_DEFAULT));
+		WordButtonIndex.setImage(WordButtonIndex.getImage().getScaledInstance(90, 30, Image.SCALE_DEFAULT));
 
 		// 创建Label
 		TrainingModeLbl_TraningMode = buildLabel(0, 0, 600, 800, TrainingModeBG);
@@ -490,8 +344,7 @@ public class Interface implements MouseListener {
 		WordButton3Lbl_TraningMode = buildLabel(270, 270, 60, 60, WordButton3);
 		WordButton4Lbl_TraningMode = buildLabel(330, 360, 60, 60, WordButton4);
 		WordButton5Lbl_TraningMode = buildLabel(390, 270, 60, 60, WordButton5);
-		settingLbl_TraningMode = buildLabel(175, 200, 250, 40,
-				WordButtonSetting);
+		settingLbl_TraningMode = buildLabel(175, 200, 250, 40, WordButtonSetting);
 		indexLbl_TraningMode = buildLabel(385, 70, 90, 30, WordButtonIndex);
 
 		TrainingModeLbl_TraningMode.add(WordButton1Lbl_TraningMode);
@@ -507,58 +360,40 @@ public class Interface implements MouseListener {
 	}
 
 	/* ========== TraningMode Interface ========== */
-	public static JPanel TrainingModeInterface() {
+	public static JPanel TrainingModeInterface(int modeNum) {
 
 		// 加载图片
-		BufferedImage TrainingModeInterface2ClassBGBuffered = null;
+		BufferedImage TrainingModeInterfaceClassBGBuffered = null;
 		ImageIcon WordButtonPicture1 = new ImageIcon(SettingClass.path);
 		ImageIcon WordButtonPicture2 = new ImageIcon(SettingClass.path2);
 		BufferedImage WordButtonBackBuffered = null;
 
 		// 设置图片
 		try {
-			TrainingModeInterface2ClassBGBuffered = ImageIO
-					.read(new File(
-							"resource/TrainingModeInterface//Training Mode Interface2.jpg"));
+			TrainingModeInterfaceClassBGBuffered = ImageIO.read(new File("resource/TrainingModeInterface//Training Mode Interface2.jpg"));
+			WordButtonBackBuffered = ImageIO.read(new File("resource/TrainingModeInterface//btnBack.jpg"));
 		} catch (Exception e) {
 			System.out.println(e);
 		}
-		ImageIcon TrainingModeInterface1ClassBG = new ImageIcon(
-				TrainingModeInterface2ClassBGBuffered);
-		try {
-			WordButtonBackBuffered = ImageIO.read(new File(
-					"resource/TrainingModeInterface//Word Button back3.jpg"));
-		} catch (Exception e) {
-			System.out.println(e);
-		}
+		ImageIcon TrainingModeInterface1ClassBG = new ImageIcon(TrainingModeInterfaceClassBGBuffered);
 		ImageIcon WordButtonBack = new ImageIcon(WordButtonBackBuffered);
 
-		TrainingModeInterface1ClassBG.setImage(TrainingModeInterface1ClassBG
-				.getImage().getScaledInstance(600, 800, Image.SCALE_DEFAULT));
-		WordButtonPicture1.setImage(WordButtonPicture1.getImage()
-				.getScaledInstance(300, 180, Image.SCALE_DEFAULT));
-		WordButtonPicture2.setImage(WordButtonPicture2.getImage()
-				.getScaledInstance(300, 180, Image.SCALE_DEFAULT));
-		WordButtonBack.setImage(WordButtonBack.getImage().getScaledInstance(
-				120, 40, Image.SCALE_DEFAULT));
+		TrainingModeInterface1ClassBG.setImage(TrainingModeInterface1ClassBG.getImage().getScaledInstance(600, 800, Image.SCALE_DEFAULT));
+		WordButtonPicture1.setImage(WordButtonPicture1.getImage().getScaledInstance(300, 180, Image.SCALE_DEFAULT));
+		WordButtonPicture2.setImage(WordButtonPicture2.getImage().getScaledInstance(300, 180, Image.SCALE_DEFAULT));
+		WordButtonBack.setImage(WordButtonBack.getImage().getScaledInstance(120, 40, Image.SCALE_DEFAULT));
 
 		// 创建Label
-		TrainingModeInterface2ClassLbl_TraningInterface = buildLabel(0, 0, 600,
-				800, TrainingModeInterface1ClassBG);
-		picture1Lbl_TraningInterface = buildLabel(150, 130, 300, 180,
-				WordButtonPicture1);
-		picture2Lbl_TraningInterface = buildLabel(150, 330, 300, 180,
-				WordButtonPicture2);
+		TrainingModeInterface2ClassLbl_TraningInterface = buildLabel(0, 0, 600, 800, TrainingModeInterface1ClassBG);
+		picture1Lbl_TraningInterface = buildLabel(150, 130, 300, 180, WordButtonPicture1);
+		picture2Lbl_TraningInterface = buildLabel(150, 330, 300, 180, WordButtonPicture2);
 		backLbl_TraningInterface = buildLabel(235, 530, 120, 40, WordButtonBack);
 		// word1_TraningInterface = buildLabel(330, 360, 60, 60, WordButton4);
 		// word2_TraningInterface = buildLabel(390, 270, 60, 60, WordButton5);
 
-		TrainingModeInterface2ClassLbl_TraningInterface
-				.add(picture1Lbl_TraningInterface);
-		TrainingModeInterface2ClassLbl_TraningInterface
-				.add(picture2Lbl_TraningInterface);
-		TrainingModeInterface2ClassLbl_TraningInterface
-				.add(backLbl_TraningInterface);
+		TrainingModeInterface2ClassLbl_TraningInterface.add(picture1Lbl_TraningInterface);
+		TrainingModeInterface2ClassLbl_TraningInterface.add(picture2Lbl_TraningInterface);
+		TrainingModeInterface2ClassLbl_TraningInterface.add(backLbl_TraningInterface);
 		// TrainingModeInterface2ClassLbl_TraningInterface.add(word1_TraningInterface);
 		// TrainingModeInterface2ClassLbl_TraningInterface.add(word2_TraningInterface);
 		jp.add(TrainingModeInterface2ClassLbl_TraningInterface);
@@ -568,26 +403,18 @@ public class Interface implements MouseListener {
 
 	/* ========== DisscusGround ========== */
 	public static JPanel DisscusGroundInterface() {
+		// get articleList
+		List<String> articelList = client.getArticleList();
+		
 		// 加载图片
-		ImageIcon comeBackToTraining = new ImageIcon(
-				DisscusGroundClass.class
-						.getResource("resource//Come back to training.jpg"));
-		ImageIcon disscusGroud = new ImageIcon(
-				DisscusGroundClass.class
-						.getResource("resource//Disscus Groud.jpg"));
-		ImageIcon logOut = new ImageIcon(
-				DisscusGroundClass.class.getResource("resource//Log Out.jpg"));
-		ImageIcon more = new ImageIcon(
-				DisscusGroundClass.class.getResource("resource//More.jpg"));
-		ImageIcon back = new ImageIcon(
-				DisscusGroundClass.class
-						.getResource("resource//Word Button back.jpg"));
-		ImageIcon photo1 = new ImageIcon(
-				DisscusGroundClass.class.getResource("resource//1.jpg"));
-		ImageIcon photo2 = new ImageIcon(
-				DisscusGroundClass.class.getResource("resource//2.jpg"));
-		ImageIcon photo3 = new ImageIcon(
-				DisscusGroundClass.class.getResource("resource//3.jpg"));
+		ImageIcon comeBackToTraining = new ImageIcon(DisscusGroundClass.class.getResource("resource//Come back to training.jpg"));
+		ImageIcon disscusGroud = new ImageIcon(DisscusGroundClass.class.getResource("resource//Disscus Groud.jpg"));
+		ImageIcon logOut = new ImageIcon(DisscusGroundClass.class.getResource("resource//Log Out.jpg"));
+		ImageIcon more = new ImageIcon(DisscusGroundClass.class.getResource("resource//More.jpg"));
+		ImageIcon back = new ImageIcon(DisscusGroundClass.class.getResource("resource//Word Button back.jpg"));
+		ImageIcon photo1 = new ImageIcon(DisscusGroundClass.class.getResource("resource//1.jpg"));
+		ImageIcon photo2 = new ImageIcon(DisscusGroundClass.class.getResource("resource//2.jpg"));
+		ImageIcon photo3 = new ImageIcon(DisscusGroundClass.class.getResource("resource//3.jpg"));
 
 		// comeBackToTraining.setImage(comeBackToTraining.getImage().getScaledInstance(150,
 		// 50, Image.SCALE_DEFAULT));
@@ -608,17 +435,30 @@ public class Interface implements MouseListener {
 
 		// 创建Label
 		DisscusGroundBGLbl_Dg = buildLabel(0, 0, 600, 800, disscusGroud);
-		backToTrainingLbl_Dg = buildLabel(360, 123, 150, 50, comeBackToTraining);
+		backToTrainingLbl_Dg = buildLabel(360, 100, 240, 80, comeBackToTraining);
 		LogOutLbl_Dg = buildLabel(250, 140, 60, 20, logOut);
 		More1Lbl_Dg = buildLabel(380, 330, 90, 30, more);
 		More2Lbl_Dg = buildLabel(380, 540, 90, 30, more);
 		BackLbl_Dg = buildLabel(30, 30, 120, 40, back);
-		picOne_Dg = buildLabel(100, 400, 100, 100, photo1);
-		picTwo_Dg = buildLabel(210, 400, 100, 100, photo2);
-		picThree_Dg = buildLabel(320, 400, 100, 100, photo3);
+		picOne_Dg = buildLabel(100, 425, 100, 100, photo1);
+		picTwo_Dg = buildLabel(210, 425, 100, 100, photo2);
+		picThree_Dg = buildLabel(320, 425, 100, 100, photo3);
+		
+		articleLbl1_Dg = new JLabel(articelList.get(0));
+		articleLbl2_Dg = new JLabel(articelList.get(1));
+		articleLbl3_Dg = new JLabel(articelList.get(2));
+		articleLbl1_Dg.setBounds(190, 215, 250, 30); // articleLbl1位置为170，215 大小为
+		articleLbl1_Dg.addMouseListener(new Interface(client)); // 设置articleLbl的监听
+		articleLbl2_Dg.setBounds(190, 250, 250, 30); // articleLbl2位置为170，250 大小为
+		articleLbl2_Dg.addMouseListener(new Interface(client)); // 设置articleLbl2的监听
+		articleLbl3_Dg.setBounds(190, 283, 250, 30); // articleLbl3位置为170，283大小为
+		articleLbl3_Dg.addMouseListener(new Interface(client)); // 设置articleLbl3的监听
 
 		DisscusGroundBGLbl_Dg.add(backToTrainingLbl_Dg);
 		DisscusGroundBGLbl_Dg.add(LogOutLbl_Dg);
+		DisscusGroundBGLbl_Dg.add(articleLbl1_Dg);
+		DisscusGroundBGLbl_Dg.add(articleLbl2_Dg);
+		DisscusGroundBGLbl_Dg.add(articleLbl3_Dg);
 		DisscusGroundBGLbl_Dg.add(More1Lbl_Dg);
 		DisscusGroundBGLbl_Dg.add(More2Lbl_Dg);
 		DisscusGroundBGLbl_Dg.add(BackLbl_Dg);
@@ -652,10 +492,9 @@ public class Interface implements MouseListener {
 		}
 	}
 
-	
 	/* ========== Mouse Listener ========== */
 	public void mouseClicked(MouseEvent e) {
-		
+
 		JLabel Lbl = (JLabel) e.getSource(); // 创建temporary标签
 
 		// Inception
@@ -680,31 +519,20 @@ public class Interface implements MouseListener {
 			jp.repaint();
 		} else if (Lbl == submit1Lbl_SignUp) {
 			if (account_SignUp.getText() == "") {
-				JOptionPane.showMessageDialog(null,
-						"The account cannot be blank!", "Error",
-						JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "The account cannot be blank!", "Error", JOptionPane.ERROR_MESSAGE);
 			} else if (password_SignUp.getText() == "") {
-				JOptionPane.showMessageDialog(null,
-						"The password cannot be blank!", "Error",
-						JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "The password cannot be blank!", "Error", JOptionPane.ERROR_MESSAGE);
 			} else if (confirm_SignUp.getText() == "") {
-				JOptionPane.showMessageDialog(null,
-						"The confirm cannot be blank!", "Error",
-						JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "The confirm cannot be blank!", "Error", JOptionPane.ERROR_MESSAGE);
 			} else if (!password_SignUp.getText().equals(confirm_SignUp.getText())) {
-				JOptionPane.showMessageDialog(null,
-						"Your password and confirm must be the same!", "Error",
-						JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Your password and confirm must be the same!", "Error", JOptionPane.ERROR_MESSAGE);
 			} else {
-				boolean isAuth = client.signUp(account_SignUp.getText(),
-						password_SignUp.getText());
+				boolean isAuth = client.signUp(account_SignUp.getText(), password_SignUp.getText());
 				if (isAuth) {
 					jp.removeAll();
 					DisscusGroundInterface();
 				} else {
-					JOptionPane.showMessageDialog(null,
-							"Sign Up failed, username may exist.", "Error",
-							JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Sign Up failed, username may exist.", "Error", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 			jp.repaint();
@@ -720,8 +548,7 @@ public class Interface implements MouseListener {
 				jp.removeAll(); // 关闭当前窗口
 				DisscusGroundInterface(); // 点击Enter2Btn后跳转至DisscusGroundClass的窗口
 			} else {
-				JOptionPane.showMessageDialog(null, "the account or password may be wrong!", "Error",
-						JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "the account or password may be wrong!", "Error", JOptionPane.ERROR_MESSAGE);
 			}
 			jp.repaint();
 		} else if (Lbl == SignUp2Lbl_SignIn) {
@@ -737,12 +564,12 @@ public class Interface implements MouseListener {
 		// setting
 		else if (Lbl == SubmitLbl_Setting) {
 			jp.removeAll();
-			/* Undo */
+			TrainingMode();
 			jp.repaint();
 		} else if (Lbl == Select1Lbl_Setting) {
 			jp.removeAll();
 			int result = 0;
-			File file = null;
+			// File file = null;
 
 			JFileChooser fileChooser = new JFileChooser();
 			FileSystemView fsv = FileSystemView.getFileSystemView();
@@ -766,7 +593,7 @@ public class Interface implements MouseListener {
 		} else if (Lbl == Select2Lbl_Setting) {
 			jp.removeAll();
 			int result = 0;
-			File file2 = null;
+			// File file2 = null;
 
 			JFileChooser fileChooser2 = new JFileChooser();
 			FileSystemView fsv = FileSystemView.getFileSystemView();
@@ -795,23 +622,23 @@ public class Interface implements MouseListener {
 		// Training mode
 		else if (Lbl == WordButton1Lbl_TraningMode) {
 			jp.removeAll();
-			TrainingModeInterface();
+			TrainingModeInterface(1);
 			jp.repaint();
 		} else if (Lbl == WordButton2Lbl_TraningMode) {
 			jp.removeAll();
-			TrainingModeInterface();
+			TrainingModeInterface(2);
 			jp.repaint();
 		} else if (Lbl == WordButton3Lbl_TraningMode) {
 			jp.removeAll();
-			TrainingModeInterface();
+			TrainingModeInterface(3);
 			jp.repaint();
 		} else if (Lbl == WordButton4Lbl_TraningMode) {
 			jp.removeAll();
-			TrainingModeInterface();
+			TrainingModeInterface(4);
 			jp.repaint();
 		} else if (Lbl == WordButton5Lbl_TraningMode) {
 			jp.removeAll();
-			TrainingModeInterface();
+			TrainingModeInterface(5);
 			jp.repaint();
 		} else if (Lbl == settingLbl_TraningMode) {
 			jp.removeAll();
@@ -848,9 +675,9 @@ public class Interface implements MouseListener {
 			SignInInterface();
 			jp.repaint();
 		} else if (Lbl == More1Lbl_Dg) {
-			jp.removeAll();
+//			jp.removeAll();
 			// TODO
-			jp.repaint();
+//			jp.repaint();
 		} else if (Lbl == More2Lbl_Dg) {
 			openWeb("http://mp.weixin.qq.com/s?__biz=MzI5OTEyMTU5MQ==&mid=400676956&idx=1&sn=f2f93166ce3fe817d3f599949588d7d6#rd");
 		} else if (Lbl == BackLbl_Dg) {

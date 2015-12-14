@@ -77,7 +77,13 @@ public class Packet implements Serializable{
 	 * @return 
 	 */
 	public boolean setArticleList(List<String> list) {
-		strArr = (String[]) list.toArray();
+//		strArr = (String[]) list.toArray();
+		strArr = new String[list.size()];
+		int i = 0;
+		for (String string : list) {
+			strArr[i] = string;
+			i++;
+		}
 		return true;
 	}
 	
