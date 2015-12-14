@@ -5,16 +5,12 @@ import javax.swing.JPanel;
 
 public class StartClient {
 
-	JFrame jf = new JFrame();
-	Interface i = new Interface();
-	JPanel jp = i.InceptionInterface();
 	public static void main(String[] args) {
-		
+		//new Inception();
+
 		JFrame jf = new JFrame();
 		Interface i = new Interface();
 		JPanel jp = i.InceptionInterface();
-		//new Inception();
-
 	
 		// 设置Frame
 				jf.setSize(600, 850); // 设置大小为 600 × 850

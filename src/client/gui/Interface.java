@@ -11,7 +11,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class Interface{
+public class Interface implements MouseListener{
 	//Inception Label
 	static JLabel LogoLbl_Inception;
 	static JLabel signUpLbl_Inception;
@@ -68,7 +68,7 @@ public class Interface{
 	static JLabel picOne_Dg;
 	static JLabel picTwo_Dg;
 	static JLabel picThree_Dg;
-
+	static JPanel jp = new JPanel();
 	
 	
 	
@@ -80,13 +80,12 @@ public class Interface{
 		JLabel jLbl = new JLabel();
 		jLbl.setIcon(image);
 		jLbl.setBounds(x, y, width, height);
-		
+		jLbl.addMouseListener(new Interface());
 		return jLbl;
 	}
 
 	//Inception
 	public static JPanel InceptionInterface(){
-		JPanel jp = new JPanel();
 
 		BufferedImage LogoBuffered = null;
 		BufferedImage signInBuffered = null;
@@ -155,7 +154,6 @@ public class Interface{
 	
 	//SignUp
 	public static JPanel SignUpInterface(){
-		JPanel jp = new JPanel();
 
 		// 加载图片
 		BufferedImage SignUpBGBuffered = null;
@@ -219,7 +217,6 @@ public class Interface{
 	
 	//SignIn
 		public static JPanel SignInInterface(){
-			JPanel jp = new JPanel();
 
 			// 加载图片
 			BufferedImage SignInBGBuffered = null;
@@ -345,6 +342,56 @@ public class Interface{
 								
 					return jp;
 		}
+
+	@Override
+//	static JLabel LogoLbl_Inception;
+//	static JLabel signUpLbl_Inception;
+//	static JLabel signInLbl_Inception;
+//	static JLabel trainingModeLbl_Inception;
+	
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		JLabel Lbl = (JLabel) e.getSource(); // 创建temporary标签
+
+		if (Lbl == signInLbl_Inception) {
+			jp.removeAll();
+			/*Undo*/
+			jp.repaint();
+		} else if (Lbl == signUpLbl_Inception) {
+			jp.removeAll();
+			SignUpInterface();
+			jp.repaint();
+		} else if (Lbl == trainingModeLbl_Inception) {
+			jp.removeAll();
+			/*Undo*/
+			jp.repaint();
+
+		}
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 	
