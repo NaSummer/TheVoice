@@ -27,7 +27,7 @@ import org.xml.sax.SAXException;
 
 public class GetArticle {
 
-	private final String ARTICLES_PATH = "info/ArticleUrl2.xml";
+	private final String ARTICLES_PATH = "info/ArticleList.xml";
 	
 	private List<String> articleList;
 	
