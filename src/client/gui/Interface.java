@@ -77,10 +77,10 @@ public class Interface implements MouseListener {
 	static JLabel picTwo_Dg;
 	static JLabel picThree_Dg;
 	static JPanel jp = new JPanel();
-	Client client = new Client();
-
-	Interface() {
-
+	static Client client;
+	
+	Interface(Client client) {
+		this.client = client;
 	}
 
 	public static JLabel buildLabel(int x, int y, int width, int height,
@@ -88,7 +88,7 @@ public class Interface implements MouseListener {
 		JLabel jLbl = new JLabel();
 		jLbl.setIcon(image);
 		jLbl.setBounds(x, y, width, height);
-		jLbl.addMouseListener(new Interface());
+		jLbl.addMouseListener(new Interface(client));
 
 		return jLbl;
 	}
