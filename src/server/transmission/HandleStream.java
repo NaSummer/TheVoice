@@ -58,8 +58,8 @@ class HandleStream extends Thread{
 					sendArticleList();
 					break;
 					
-				case Packet.ASK_ARTICLE:
-					sendArticle(packet.getArticleNumber());
+				case Packet.ASK_ARTICLE_URL:
+					sendArticleUrl(packet.getArticleNumber());
 					break;
 				
 				
@@ -91,9 +91,9 @@ class HandleStream extends Thread{
 	 * @param 
 	 * @return 
 	 */
-	private void sendArticle(int articleNumber) {
-		Packet backPacket = new Packet(Packet.ARTICLE, username);
-		backPacket.setArticle(articleTool.getArticle(articleNumber));
+	private void sendArticleUrl(int articleNumber) {
+		Packet backPacket = new Packet(Packet.ARTICLE_URL, username);
+		backPacket.setArticleUrl(articleTool.getArticleUrl(articleNumber));
 		sendPacket(backPacket);
 		// TODO Auto-generated method stub
 	}
