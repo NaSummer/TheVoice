@@ -11,7 +11,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class Interface{
+public class Interface implements MouseListener{
 	//Inception Label
 	static JLabel LogoLbl_Inception;
 	static JLabel signUpLbl_Inception;
@@ -68,7 +68,7 @@ public class Interface{
 	static JLabel picOne_Dg;
 	static JLabel picTwo_Dg;
 	static JLabel picThree_Dg;
-
+	static JPanel jp = new JPanel();
 	
 	
 	
@@ -80,13 +80,14 @@ public class Interface{
 		JLabel jLbl = new JLabel();
 		jLbl.setIcon(image);
 		jLbl.setBounds(x, y, width, height);
+		jLbl.addMouseListener(new Interface());
 		
 		return jLbl;
 	}
 
 	//Inception
 	public static JPanel InceptionInterface(){
-		JPanel jp = new JPanel();
+
 
 		BufferedImage LogoBuffered = null;
 		BufferedImage signInBuffered = null;
@@ -155,7 +156,6 @@ public class Interface{
 	
 	//SignUp
 	public static JPanel SignUpInterface(){
-		JPanel jp = new JPanel();
 
 		// º”‘ÿÕº∆¨
 		BufferedImage SignUpBGBuffered = null;
@@ -224,7 +224,6 @@ public class Interface{
 	
 	//SignIn
 		public static JPanel SignInInterface(){
-			JPanel jp = new JPanel();
 
 			// º”‘ÿÕº∆¨
 			BufferedImage SignInBGBuffered = null;
@@ -293,8 +292,7 @@ public class Interface{
 		
 	//setting
 		public static JPanel SettingInterface(){
-			JPanel jp = new JPanel();
-
+			
 			// º”‘ÿÕº∆¨
 			BufferedImage SettingBGBuffered = null;
 			BufferedImage WordButtonSubmitBuffered = null;
@@ -369,7 +367,6 @@ public class Interface{
 		
 		//TrainingMode
 				public static JPanel TrainingMode(){
-					JPanel jp = new JPanel();
 
 					// º”‘ÿÕº∆¨
 					BufferedImage TraingingModeBGBuffered = null;
@@ -492,7 +489,6 @@ public class Interface{
 				
 				//TraningMode Interface
 				public static JPanel TrainingModeInterface(){
-					JPanel jp = new JPanel();
 
 					// º”‘ÿÕº∆¨
 					BufferedImage TrainingModeInterface2ClassBGBuffered = null;
@@ -548,5 +544,234 @@ public class Interface{
 				
 				
 	
+				
+				
+				
+				
+				public void mouseClicked(MouseEvent e) {
+					// TODO Auto-generated method stub
+					JLabel Lbl = (JLabel) e.getSource(); // ¥¥Ω®temporary±Í«©
+
+					//Inception
+					if (Lbl == signInLbl_Inception) {
+						jp.removeAll();
+						/* Undo */
+						jp.repaint();
+					} else if (Lbl == signUpLbl_Inception) {
+						jp.removeAll();
+						SignUpInterface();
+						jp.repaint();
+					} else if (Lbl == trainingModeLbl_Inception) {
+						jp.removeAll();
+						/* Undo */
+						jp.repaint();
+					} 
+					
+					//sign up
+					else if (Lbl == SignUpLbl_SignUp) {
+						jp.removeAll();
+						/* Undo */
+						jp.repaint();
+					} else if (Lbl == signIn1Lbl_SignUp) {
+						jp.removeAll();
+						/* Undo */
+						jp.repaint();
+					} else if (Lbl == submit1Lbl_SignUp) {
+						jp.removeAll();
+						/* Undo */
+						jp.repaint();
+					} else if (Lbl == trainingMode1Lbl_SignUp) {
+						jp.removeAll();
+						/* Undo */
+						jp.repaint();
+					} 
+					
+					//sign in 
+					else if (Lbl == SignInLbl_SignIn) {
+						jp.removeAll();
+						/* Undo */
+						jp.repaint();
+					} else if (Lbl == Enter2Lbl_SignIn) {
+						jp.removeAll();
+						/* Undo */
+						jp.repaint();
+					} else if (Lbl == SignUp2Lbl_SignIn) {
+						jp.removeAll();
+						/* Undo */
+						jp.repaint();
+					} else if (Lbl == trainingModeLbl_SignIn) {
+						jp.removeAll();
+						/* Undo */
+						jp.repaint();
+					} 
+					
+					//setting
+					else if (Lbl == SettingLbl_Setting) {
+						jp.removeAll();
+						/* Undo */
+						jp.repaint();
+					} else if (Lbl == SubmitLbl_Setting) {
+						jp.removeAll();
+						/* Undo */
+						jp.repaint();
+					} else if (Lbl == SubmitLbl_Setting) {
+						jp.removeAll();
+						/* Undo */
+						jp.repaint();
+					} else if (Lbl == Select1Lbl_Setting) {
+						jp.removeAll();
+						/* Undo */
+						jp.repaint();
+					} else if (Lbl == Select2Lbl_Setting) {
+						jp.removeAll();
+						/* Undo */
+						jp.repaint();
+					} else if (Lbl == BackLbl_Setting) {
+						jp.removeAll();
+						/* Undo */
+						jp.repaint();
+					}
+					
+					
+					//Training mode
+					else if (Lbl == TrainingModeLbl_TraningMode) {
+						jp.removeAll();
+						/* Undo */
+						jp.repaint();
+					} else if (Lbl == WordButton1Lbl_TraningMode) {
+						jp.removeAll();
+						/* Undo */
+						jp.repaint();
+					} else if (Lbl == WordButton2Lbl_TraningMode) {
+						jp.removeAll();
+						/* Undo */
+						jp.repaint();
+					} else if (Lbl == WordButton3Lbl_TraningMode) {
+						jp.removeAll();
+						/* Undo */
+						jp.repaint();
+					} else if (Lbl == WordButton4Lbl_TraningMode) {
+						jp.removeAll();
+						/* Undo */
+						jp.repaint();
+					} else if (Lbl == WordButton5Lbl_TraningMode) {
+						jp.removeAll();
+						/* Undo */
+						jp.repaint();
+					} else if (Lbl == settingLbl_TraningMode) {
+						jp.removeAll();
+						/* Undo */
+						jp.repaint();
+					} else if (Lbl == indexLbl_TraningMode) {
+						jp.removeAll();
+						/* Undo */
+						jp.repaint();
+					} 
+					
+					//training mode interface
+					else if (Lbl == TrainingModeInterface2ClassLbl_TraningInterface) {
+						jp.removeAll();
+						/* Undo */
+						jp.repaint();
+					} else if (Lbl == picture1Lbl_TraningInterface) {
+						jp.removeAll();
+						/* Undo */
+						jp.repaint();
+					} else if (Lbl == picture2Lbl_TraningInterface) {
+						jp.removeAll();
+						/* Undo */
+						jp.repaint();
+					} else if (Lbl == backLbl_TraningInterface) {
+						jp.removeAll();
+						/* Undo */
+						jp.repaint();
+					} else if (Lbl == word1_TraningInterface) {
+						jp.removeAll();
+						/* Undo */
+						jp.repaint();
+					} else if (Lbl == word2_TraningInterface) {
+						jp.removeAll();
+						/* Undo */
+						jp.repaint();
+						
+						//DG
+					} else if (Lbl == DisscusGroundBGLbl_Dg) {
+						jp.removeAll();
+						/* Undo */
+						jp.repaint();
+					} else if (Lbl == backToTrainingLbl_Dg) {
+						jp.removeAll();
+						/* Undo */
+						jp.repaint();
+					} else if (Lbl == LogOutLbl_Dg) {
+						jp.removeAll();
+						/* Undo */
+						jp.repaint();
+					} else if (Lbl == More1Lbl_Dg) {
+						jp.removeAll();
+						/* Undo */
+						jp.repaint();
+					} else if (Lbl == More2Lbl_Dg) {
+						jp.removeAll();
+						/* Undo */
+						jp.repaint();
+					} else if (Lbl == BackLbl_Dg) {
+						jp.removeAll();
+						/* Undo */
+						jp.repaint();
+					} else if (Lbl == articleLbl1_Dg) {
+						jp.removeAll();
+						/* Undo */
+						jp.repaint();
+					} else if (Lbl == articleLbl2_Dg) {
+						jp.removeAll();
+						/* Undo */
+						jp.repaint();
+					} else if (Lbl == articleLbl3_Dg) {
+						jp.removeAll();
+						/* Undo */
+						jp.repaint();
+					} else if (Lbl == picOne_Dg) {
+						jp.removeAll();
+						/* Undo */
+						jp.repaint();
+					} else if (Lbl == picTwo_Dg) {
+						jp.removeAll();
+						/* Undo */
+						jp.repaint();
+					} else if (Lbl == picThree_Dg) {
+						jp.removeAll();
+						/* Undo */
+						jp.repaint();
+					}
+				}
+
+				@Override
+				public void mouseEntered(MouseEvent e) {
+					// TODO Auto-generated method stub
+
+				}
+
+				@Override
+				public void mouseExited(MouseEvent e) {
+					// TODO Auto-generated method stub
+
+				}
+
+				@Override
+				public void mousePressed(MouseEvent e) {
+					// TODO Auto-generated method stub
+
+				}
+
+				@Override
+				public void mouseReleased(MouseEvent e) {
+					// TODO Auto-generated method stub
+
+				}
+				
+				
+				
+				
 	
 }
