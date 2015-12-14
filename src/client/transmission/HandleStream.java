@@ -48,9 +48,9 @@ public class HandleStream extends Thread{
 					client.isNewArticleList = true;
 					break;
 					
-				case Packet.ARTICLE:
-					client.article = packet.getArticle();
-					client.isNewArticle = true;
+				case Packet.ARTICLE_URL:
+					client.articleUrl = packet.getArticleUrl();
+					client.isNewArticleUrl = true;
 					break;
 				
 				

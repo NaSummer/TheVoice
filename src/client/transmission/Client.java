@@ -44,9 +44,9 @@ public class Client {
 	protected boolean isAuth = false;
 
 	List<String> articleList;
-	String article;
+	String articleUrl;
 	boolean isNewArticleList = false;
-	boolean isNewArticle = false;
+	boolean isNewArticleUrl = false;
 
 	public Client() {
 		this.DEVICE_ID = Tool.generateID();
@@ -140,18 +140,18 @@ public class Client {
 	 * @param
 	 * @return
 	 */
-	public String getArticle(int articleNumber) {
+	public String getArticleUrl(int articleNumber) {
 
-		Packet packet = new Packet(Packet.ASK_ARTICLE, this.username);
+		Packet packet = new Packet(Packet.ASK_ARTICLE_URL, this.username);
 		packet.setArticleNumber(articleNumber);
 		sendPacket(packet);
 		long tmpTime = System.currentTimeMillis();
-		while (!isNewArticle && System.currentTimeMillis() - tmpTime < 3000L) {
+		while (!isNewArticleUrl && System.currentTimeMillis() - tmpTime < 3000L) {
 			// blank
 		}
-		if (isNewArticle) {
-			isNewArticle = false;
-			return article;
+		if (isNewArticleUrl) {
+			isNewArticleUrl = false;
+			return articleUrl;
 		} else {
 			return new String();
 		}

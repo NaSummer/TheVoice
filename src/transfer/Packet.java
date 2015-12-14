@@ -33,8 +33,8 @@ public class Packet implements Serializable{
 	public final static int ASK_ARTICLE_LIST = 8;
 	public final static int ARTICLE_LIST = 9;
 	
-	public final static int ASK_ARTICLE = 10;
-	public final static int ARTICLE = 11;
+	public final static int ASK_ARTICLE_URL = 10;
+	public final static int ARTICLE_URL = 11;
 	
 	public final static int CREARE_ARTICLE = 12;
 	public final static int CREARE_ARTICLE_SUCCESS = 13;
@@ -86,7 +86,7 @@ public class Packet implements Serializable{
 	 * @param 
 	 * @return 
 	 */
-	public boolean setArticle(String string) {
+	public boolean setArticleUrl(String string) {
 		this.str1 = string;
 		return true;
 	}
@@ -130,7 +130,7 @@ public class Packet implements Serializable{
 	 * @param 
 	 * @return 
 	 */
-	public String getArticle() {
+	public String getArticleUrl() {
 		return str1;
 	}
 	
