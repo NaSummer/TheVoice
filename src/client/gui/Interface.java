@@ -716,15 +716,14 @@ public class Interface implements MouseListener {
 
 		// sign in
 		else if (Lbl == Enter2Lbl_SignIn) {
-			 if (client.signIn(account_SignIn.getText(), password_SignIn.getText())) {
-			 DisscusGroundInterface(); // 点击Enter2Btn后跳转至DisscusGroundClass的窗口
-			 jp.removeAll(); // 关闭当前窗口
-			 } else {
-			 JOptionPane.showMessageDialog(null,
-			 "the account or password may be wrong!", "Error",
-			 JOptionPane.ERROR_MESSAGE);
-			 }
-			 jp.repaint();
+			if (client.signIn(account_SignIn.getText(), password_SignIn.getText())) {
+				jp.removeAll(); // 关闭当前窗口
+				DisscusGroundInterface(); // 点击Enter2Btn后跳转至DisscusGroundClass的窗口
+			} else {
+				JOptionPane.showMessageDialog(null, "the account or password may be wrong!", "Error",
+						JOptionPane.ERROR_MESSAGE);
+			}
+			jp.repaint();
 		} else if (Lbl == SignUp2Lbl_SignIn) {
 			jp.removeAll();
 			SignUpInterface();
